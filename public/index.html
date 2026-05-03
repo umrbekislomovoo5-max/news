@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Umarchik</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body>
+  <section class="auth-overlay" id="authOverlay">
+    <div class="auth-card">
+      <div class="auth-shell" id="authShell">
+        <div class="auth-left">
+          <div class="auth-brand">
+            <span class="brand-mark">◆</span>
+            <h2>Umarchik</h2>
+          </div>
+
+          <form id="loginForm" class="auth-form">
+            <h3>Sign in</h3>
+            <input id="loginUsername" type="text" placeholder="Username" required />
+            <input id="loginPassword" type="password" placeholder="Password" required />
+            <button type="submit" class="auth-submit">SIGN IN</button>
+          </form>
+
+          <form id="registerForm" class="auth-form hidden">
+            <h3>Create account</h3>
+            <input id="regUsername" type="text" placeholder="Username" required />
+            <input id="regEmail" type="email" placeholder="Email" required />
+            <input id="regPassword" type="password" placeholder="Password" required />
+            <button type="submit" class="auth-submit">SIGN UP</button>
+          </form>
+
+          <p id="authStatus" class="auth-status"></p>
+        </div>
+
+        <div class="auth-right">
+          <p class="auth-hello">Hello, Friend!</p>
+          <p class="auth-copy">Enter your personal details and start your journey with us</p>
+          <button class="auth-ghost" id="showRegister" type="button">SIGN UP</button>
+          <button class="auth-ghost hidden" id="showLogin" type="button">SIGN IN</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-row">
+        <span class="brand-mark">◆</span>
+        <h1>Umarchik</h1>
+      </div>
+
+      <ul class="contact-list" id="contactList">
+        <li class="contact-item" data-user="mironshohDev">
+          <span class="avatar avatar-1">🕶️</span>
+          <div>
+            <p class="contact-name">mironshohDev</p>
+            <p class="contact-status">online</p>
+          </div>
+        </li>
+        <li class="contact-item active" data-user="mironshox">
+          <span class="avatar avatar-2">🧑</span>
+          <div>
+            <p class="contact-name">mironshox</p>
+            <p class="contact-status">typing...</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="profile-bar">
+        <span class="avatar avatar-3" id="profileAvatar">🙂</span>
+        <div>
+          <p class="profile-name" id="profileName">Guest</p>
+          <p class="profile-role">You</p>
+        </div>
+        <button class="avatar-edit-btn" id="avatarEditBtn" aria-label="Edit Avatar">✏️</button>
+      </div>
+    </aside>
+
+    <!-- Avatar Picker Modal -->
+    <div class="avatar-modal hidden" id="avatarModal">
+      <div class="avatar-modal-content">
+        <h3>Choose Avatar</h3>
+        <div class="avatar-picker" id="avatarPicker"></div>
+        <button class="modal-close" id="avatarModalClose">Close</button>
+      </div>
+    </div>
+
+    <section class="chat-panel">
+      <header class="chat-head">
+        <div class="chat-user">
+          <span class="avatar avatar-2">🧑</span>
+          <p id="activeUser">mironshox</p>
+        </div>
+        <button class="power-btn" aria-label="Logout" title="Logout">LOG OUT</button>
+      </header>
+
+      <div class="messages" id="messages"></div>
+
+      <form class="composer" id="composer">
+        <button type="button" class="emoji-btn" aria-label="Emoji">☺</button>
+        <input id="messageInput" type="text" placeholder="type your message here" autocomplete="off" />
+        <button type="submit" class="send-btn" aria-label="Send">➤</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="./app.js" type="module"></script>
+</body>
+</html>
